@@ -1,0 +1,26 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "participants",
+            "otherEntityName": "participant",
+            "otherEntityRelationshipName": "dynamicQueue"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "participants",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "pace",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170528155111",
+    "entityTableName": "dynamic_queue",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

@@ -1,0 +1,54 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "dynamicInfo",
+            "otherEntityName": "dynamicQueue",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "queue"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "location",
+            "otherEntityName": "location",
+            "otherEntityRelationshipName": "queue"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "manager",
+            "otherEntityName": "admin",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "organization",
+            "otherEntityName": "organization",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "desc",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "maxCapacity",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "site",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170528155110",
+    "entityTableName": "queue",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

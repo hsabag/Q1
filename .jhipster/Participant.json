@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "dynamicQueue",
+            "otherEntityName": "dynamicQueue",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "participant"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "position",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20170528155112",
+    "entityTableName": "participant",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

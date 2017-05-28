@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Participant.
+    -->
+    <changeSet id="20170528155112-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="dynamic_queue_id"
+                                 baseTableName="participant"
+                                 constraintName="fk_participant_dynamic_queue_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dynamic_queue"/>
+
+        <addForeignKeyConstraint baseColumnNames="person_id"
+                                 baseTableName="participant"
+                                 constraintName="fk_participant_person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+    </changeSet>
+</databaseChangeLog>

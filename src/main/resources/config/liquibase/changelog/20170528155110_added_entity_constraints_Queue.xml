@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Queue.
+    -->
+    <changeSet id="20170528155110-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="dynamic_info_id"
+                                 baseTableName="queue"
+                                 constraintName="fk_queue_dynamic_info_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dynamic_queue"/>
+
+        <addForeignKeyConstraint baseColumnNames="manager_id"
+                                 baseTableName="queue"
+                                 constraintName="fk_queue_manager_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="admin"/>
+
+        <addForeignKeyConstraint baseColumnNames="organization_id"
+                                 baseTableName="queue"
+                                 constraintName="fk_queue_organization_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="organization"/>
+
+    </changeSet>
+</databaseChangeLog>

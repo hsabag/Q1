@@ -1,0 +1,76 @@
+entity Queue {
+	name String,
+    desc String,
+    maxCapacity Integer,
+    site String
+}
+
+entity DynamicQueue {
+	participants Long,
+	pace Integer
+}
+
+entity Participant {
+	position Long
+}
+
+entity Person {
+	/**
+	* The firstname attribute.
+	*/
+	firstName String,
+	lastName String,
+	email String,
+	phoneNumber String
+}
+
+relationship OneToMany {
+	DynamicQueue{participants} to Participant
+}
+
+relationship OneToOne {
+	Participant{person} to Person
+}
+
+relationship OneToOne {
+	Queue{dynamicInfo} to DynamicQueue
+}
+
+relationship OneToMany {
+	Queue{location} to Location
+}
+
+relationship ManyToOne {
+    Queue{manager} to Admin,
+    Queue{organization} to Organization
+}
+
+
+// an ignored comment
+/** not an ignored comment */
+entity Location {
+	streetAddress String,
+	postalCode String,
+	city String,
+	stateProvince String
+}
+
+entity Organization {
+	name String required
+}
+
+
+
+/**
+ * The Employee entity.
+ */
+entity Admin {
+	/**
+	* The firstname attribute.
+	*/
+	firstName String,
+	lastName String,
+	email String,
+	phoneNumber String
+}
+
