@@ -6,8 +6,8 @@ entity Queue {
 }
 
 entity DynamicQueue {
-	participants Long,
-	pace Integer
+	numParticipants Long,
+	rate Integer
 }
 
 entity Participant {

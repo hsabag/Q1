@@ -38,11 +38,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = Q1App.class)
 public class DynamicQueueResourceIntTest {
 
-    private static final Long DEFAULT_PARTICIPANTS = 1L;
-    private static final Long UPDATED_PARTICIPANTS = 2L;
+    private static final Long DEFAULT_NUM_PARTICIPANTS = 1L;
+    private static final Long UPDATED_NUM_PARTICIPANTS = 2L;
 
-    private static final Integer DEFAULT_PACE = 1;
-    private static final Integer UPDATED_PACE = 2;
+    private static final Integer DEFAULT_RATE = 1;
+    private static final Integer UPDATED_RATE = 2;
 
     @Autowired
     private DynamicQueueRepository dynamicQueueRepository;
@@ -84,8 +84,8 @@ public class DynamicQueueResourceIntTest {
      */
     public static DynamicQueue createEntity(EntityManager em) {
         DynamicQueue dynamicQueue = new DynamicQueue()
-            .participants(DEFAULT_PARTICIPANTS)
-            .pace(DEFAULT_PACE);
+            .numParticipants(DEFAULT_NUM_PARTICIPANTS)
+            .rate(DEFAULT_RATE);
         return dynamicQueue;
     }
 
@@ -110,8 +110,8 @@ public class DynamicQueueResourceIntTest {
         List<DynamicQueue> dynamicQueueList = dynamicQueueRepository.findAll();
         assertThat(dynamicQueueList).hasSize(databaseSizeBeforeCreate + 1);
         DynamicQueue testDynamicQueue = dynamicQueueList.get(dynamicQueueList.size() - 1);
-        assertThat(testDynamicQueue.getParticipants()).isEqualTo(DEFAULT_PARTICIPANTS);
-        assertThat(testDynamicQueue.getPace()).isEqualTo(DEFAULT_PACE);
+        assertThat(testDynamicQueue.getNumParticipants()).isEqualTo(DEFAULT_NUM_PARTICIPANTS);
+        assertThat(testDynamicQueue.getRate()).isEqualTo(DEFAULT_RATE);
 
         // Validate the DynamicQueue in Elasticsearch
         DynamicQueue dynamicQueueEs = dynamicQueueSearchRepository.findOne(testDynamicQueue.getId());
@@ -148,8 +148,8 @@ public class DynamicQueueResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(dynamicQueue.getId().intValue())))
-            .andExpect(jsonPath("$.[*].participants").value(hasItem(DEFAULT_PARTICIPANTS.intValue())))
-            .andExpect(jsonPath("$.[*].pace").value(hasItem(DEFAULT_PACE)));
+            .andExpect(jsonPath("$.[*].numParticipants").value(hasItem(DEFAULT_NUM_PARTICIPANTS.intValue())))
+            .andExpect(jsonPath("$.[*].rate").value(hasItem(DEFAULT_RATE)));
     }
 
     @Test
@@ -163,8 +163,8 @@ public class DynamicQueueResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(dynamicQueue.getId().intValue()))
-            .andExpect(jsonPath("$.participants").value(DEFAULT_PARTICIPANTS.intValue()))
-            .andExpect(jsonPath("$.pace").value(DEFAULT_PACE));
+            .andExpect(jsonPath("$.numParticipants").value(DEFAULT_NUM_PARTICIPANTS.intValue()))
+            .andExpect(jsonPath("$.rate").value(DEFAULT_RATE));
     }
 
     @Test
@@ -186,8 +186,8 @@ public class DynamicQueueResourceIntTest {
         // Update the dynamicQueue
         DynamicQueue updatedDynamicQueue = dynamicQueueRepository.findOne(dynamicQueue.getId());
         updatedDynamicQueue
-            .participants(UPDATED_PARTICIPANTS)
-            .pace(UPDATED_PACE);
+            .numParticipants(UPDATED_NUM_PARTICIPANTS)
+            .rate(UPDATED_RATE);
 
         restDynamicQueueMockMvc.perform(put("/api/dynamic-queues")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -198,8 +198,8 @@ public class DynamicQueueResourceIntTest {
         List<DynamicQueue> dynamicQueueList = dynamicQueueRepository.findAll();
         assertThat(dynamicQueueList).hasSize(databaseSizeBeforeUpdate);
         DynamicQueue testDynamicQueue = dynamicQueueList.get(dynamicQueueList.size() - 1);
-        assertThat(testDynamicQueue.getParticipants()).isEqualTo(UPDATED_PARTICIPANTS);
-        assertThat(testDynamicQueue.getPace()).isEqualTo(UPDATED_PACE);
+        assertThat(testDynamicQueue.getNumParticipants()).isEqualTo(UPDATED_NUM_PARTICIPANTS);
+        assertThat(testDynamicQueue.getRate()).isEqualTo(UPDATED_RATE);
 
         // Validate the DynamicQueue in Elasticsearch
         DynamicQueue dynamicQueueEs = dynamicQueueSearchRepository.findOne(testDynamicQueue.getId());
@@ -258,8 +258,8 @@ public class DynamicQueueResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(dynamicQueue.getId().intValue())))
-            .andExpect(jsonPath("$.[*].participants").value(hasItem(DEFAULT_PARTICIPANTS.intValue())))
-            .andExpect(jsonPath("$.[*].pace").value(hasItem(DEFAULT_PACE)));
+            .andExpect(jsonPath("$.[*].numParticipants").value(hasItem(DEFAULT_NUM_PARTICIPANTS.intValue())))
+            .andExpect(jsonPath("$.[*].rate").value(hasItem(DEFAULT_RATE)));
     }
 
     @Test

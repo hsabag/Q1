@@ -21,11 +21,11 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="participants" type="bigint">
+            <column name="num_participants" type="bigint">
                 <constraints nullable="true" />
             </column>
 
-            <column name="pace" type="integer">
+            <column name="rate" type="integer">
                 <constraints nullable="true" />
             </column>
 

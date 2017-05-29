@@ -27,11 +27,11 @@ public class DynamicQueue implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "participants")
-    private Long participants;
+    @Column(name = "num_participants")
+    private Long numParticipants;
 
-    @Column(name = "pace")
-    private Integer pace;
+    @Column(name = "rate")
+    private Integer rate;
 
     @OneToMany(mappedBy = "dynamicQueue")
     @JsonIgnore
@@ -46,30 +46,30 @@ public class DynamicQueue implements Serializable {
         this.id = id;
     }
 
-    public Long getParticipants() {
-        return participants;
+    public Long getNumParticipants() {
+        return numParticipants;
     }
 
-    public DynamicQueue participants(Long participants) {
-        this.participants = participants;
+    public DynamicQueue numParticipants(Long numParticipants) {
+        this.numParticipants = numParticipants;
         return this;
     }
 
-    public void setParticipants(Long participants) {
-        this.participants = participants;
+    public void setNumParticipants(Long numParticipants) {
+        this.numParticipants = numParticipants;
     }
 
-    public Integer getPace() {
-        return pace;
+    public Integer getRate() {
+        return rate;
     }
 
-    public DynamicQueue pace(Integer pace) {
-        this.pace = pace;
+    public DynamicQueue rate(Integer rate) {
+        this.rate = rate;
         return this;
     }
 
-    public void setPace(Integer pace) {
-        this.pace = pace;
+    public void setRate(Integer rate) {
+        this.rate = rate;
     }
 
     public Set<Participant> getParticipants() {
@@ -121,8 +121,8 @@ public class DynamicQueue implements Serializable {
     public String toString() {
         return "DynamicQueue{" +
             "id=" + getId() +
-            ", participants='" + getParticipants() + "'" +
-            ", pace='" + getPace() + "'" +
+            ", numParticipants='" + getNumParticipants() + "'" +
+            ", rate='" + getRate() + "'" +
             "}";
     }
 }

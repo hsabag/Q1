@@ -10,11 +10,11 @@
     ],
     "fields": [
         {
-            "fieldName": "participants",
+            "fieldName": "numParticipants",
             "fieldType": "Long"
         },
         {
-            "fieldName": "pace",
+            "fieldName": "rate",
             "fieldType": "Integer"
         }
     ],
